@@ -26,6 +26,7 @@
 		363B8330223ACDE4004CCBAA /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 363B832F223ACD6D004CCBAA /* Mock.json */; };
 		363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */; };
 		363B8334223ACF11004CCBAA /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */; };
+		363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */; };
 		63884CF0F257C6A491435BA0 /* Pods_AutoResizingCollectionViewTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDFC16E1A5B43794FD7ED9 /* Pods_AutoResizingCollectionViewTutorial.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		363B832F223ACD6D004CCBAA /* Mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
 		363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
+		363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 		9D1FBBAC16E8525CA2B6D4B1 /* Pods-AutoResizingCollectionViewTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		B78DB56CFFEBED2869092789 /* Pods-AutoResizingCollectionViewTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 		363B8303223AB93A004CCBAA /* AutoResizingCollectionViewTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				363B8335223AD5F9004CCBAA /* Extensions */,
 				363B832E223ACD39004CCBAA /* Models */,
 				363B8317223AC7AA004CCBAA /* Components */,
 				363B8316223AC77C004CCBAA /* Subviews */,
@@ -135,6 +138,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		363B8335223AD5F9004CCBAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		619179277600F978FC9753F0 /* Frameworks */ = {
@@ -281,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */,
+				363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */,
 				363B8319223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift in Sources */,
 				363B8322223ACB5C004CCBAA /* LabelCollectionViewCell.swift in Sources */,
 				363B832B223ACC65004CCBAA /* CollectionViewLayout.swift in Sources */,
