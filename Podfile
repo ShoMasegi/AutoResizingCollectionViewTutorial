@@ -6,5 +6,5 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'AutoResizingCollectionViewTutorial' do
-
+    pod 'Kingfisher', '~> 5.0'
 end
