@@ -12,6 +12,20 @@
 		363B830A223AB93B004CCBAA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363B8308223AB93B004CCBAA /* Main.storyboard */; };
 		363B830C223AB93D004CCBAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 363B830B223AB93D004CCBAA /* Assets.xcassets */; };
 		363B830F223AB93D004CCBAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 363B830D223AB93D004CCBAA /* LaunchScreen.storyboard */; };
+		363B8319223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8318223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift */; };
+		363B831B223AC90F004CCBAA /* CollectionViewHeaderFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B831A223AC90F004CCBAA /* CollectionViewHeaderFooterView.xib */; };
+		363B831E223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B831C223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift */; };
+		363B831F223ACB0F004CCBAA /* ImageLabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B831D223ACB0F004CCBAA /* ImageLabelCollectionViewCell.xib */; };
+		363B8322223ACB5C004CCBAA /* LabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8320223ACB5C004CCBAA /* LabelCollectionViewCell.swift */; };
+		363B8323223ACB5C004CCBAA /* LabelCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8321223ACB5C004CCBAA /* LabelCollectionViewCell.xib */; };
+		363B8326223ACB86004CCBAA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8324223ACB86004CCBAA /* CollectionViewCell.swift */; };
+		363B8327223ACB86004CCBAA /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8325223ACB86004CCBAA /* CollectionViewCell.xib */; };
+		363B8329223ACBE0004CCBAA /* StretchImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8328223ACBE0004CCBAA /* StretchImageView.swift */; };
+		363B832B223ACC65004CCBAA /* CollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B832A223ACC65004CCBAA /* CollectionViewLayout.swift */; };
+		363B832D223ACCEC004CCBAA /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B832C223ACCEC004CCBAA /* CollectionViewDataSource.swift */; };
+		363B8330223ACDE4004CCBAA /* Mock.json in Resources */ = {isa = PBXBuildFile; fileRef = 363B832F223ACD6D004CCBAA /* Mock.json */; };
+		363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */; };
+		363B8334223ACF11004CCBAA /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */; };
 		63884CF0F257C6A491435BA0 /* Pods_AutoResizingCollectionViewTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDFC16E1A5B43794FD7ED9 /* Pods_AutoResizingCollectionViewTutorial.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +38,20 @@
 		363B830B223AB93D004CCBAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		363B830E223AB93D004CCBAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		363B8310223AB93D004CCBAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		363B8318223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHeaderFooterView.swift; sourceTree = "<group>"; };
+		363B831A223AC90F004CCBAA /* CollectionViewHeaderFooterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewHeaderFooterView.xib; sourceTree = "<group>"; };
+		363B831C223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		363B831D223ACB0F004CCBAA /* ImageLabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		363B8320223ACB5C004CCBAA /* LabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelCollectionViewCell.swift; sourceTree = "<group>"; };
+		363B8321223ACB5C004CCBAA /* LabelCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelCollectionViewCell.xib; sourceTree = "<group>"; };
+		363B8324223ACB86004CCBAA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		363B8325223ACB86004CCBAA /* CollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
+		363B8328223ACBE0004CCBAA /* StretchImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StretchImageView.swift; sourceTree = "<group>"; };
+		363B832A223ACC65004CCBAA /* CollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLayout.swift; sourceTree = "<group>"; };
+		363B832C223ACCEC004CCBAA /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
+		363B832F223ACD6D004CCBAA /* Mock.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Mock.json; sourceTree = "<group>"; };
+		363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
+		363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		9D1FBBAC16E8525CA2B6D4B1 /* Pods-AutoResizingCollectionViewTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		B78DB56CFFEBED2869092789 /* Pods-AutoResizingCollectionViewTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,14 +89,52 @@
 		363B8303223AB93A004CCBAA /* AutoResizingCollectionViewTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				363B832E223ACD39004CCBAA /* Models */,
+				363B8317223AC7AA004CCBAA /* Components */,
+				363B8316223AC77C004CCBAA /* Subviews */,
 				363B8304223AB93A004CCBAA /* AppDelegate.swift */,
 				363B8306223AB93A004CCBAA /* ViewController.swift */,
-				363B8308223AB93B004CCBAA /* Main.storyboard */,
+				363B832A223ACC65004CCBAA /* CollectionViewLayout.swift */,
+				363B832C223ACCEC004CCBAA /* CollectionViewDataSource.swift */,
+				363B832F223ACD6D004CCBAA /* Mock.json */,
 				363B830B223AB93D004CCBAA /* Assets.xcassets */,
 				363B830D223AB93D004CCBAA /* LaunchScreen.storyboard */,
+				363B8308223AB93B004CCBAA /* Main.storyboard */,
 				363B8310223AB93D004CCBAA /* Info.plist */,
 			);
 			path = AutoResizingCollectionViewTutorial;
+			sourceTree = "<group>";
+		};
+		363B8316223AC77C004CCBAA /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				363B8318223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift */,
+				363B831A223AC90F004CCBAA /* CollectionViewHeaderFooterView.xib */,
+				363B831C223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift */,
+				363B831D223ACB0F004CCBAA /* ImageLabelCollectionViewCell.xib */,
+				363B8320223ACB5C004CCBAA /* LabelCollectionViewCell.swift */,
+				363B8321223ACB5C004CCBAA /* LabelCollectionViewCell.xib */,
+				363B8324223ACB86004CCBAA /* CollectionViewCell.swift */,
+				363B8325223ACB86004CCBAA /* CollectionViewCell.xib */,
+				363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */,
+				363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		363B8317223AC7AA004CCBAA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				363B8328223ACBE0004CCBAA /* StretchImageView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		363B832E223ACD39004CCBAA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		619179277600F978FC9753F0 /* Frameworks */ = {
@@ -148,7 +214,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363B8330223ACDE4004CCBAA /* Mock.json in Resources */,
+				363B831F223ACB0F004CCBAA /* ImageLabelCollectionViewCell.xib in Resources */,
+				363B8334223ACF11004CCBAA /* HorizontalCollectionViewCell.xib in Resources */,
+				363B8327223ACB86004CCBAA /* CollectionViewCell.xib in Resources */,
+				363B8323223ACB5C004CCBAA /* LabelCollectionViewCell.xib in Resources */,
 				363B830F223AB93D004CCBAA /* LaunchScreen.storyboard in Resources */,
+				363B831B223AC90F004CCBAA /* CollectionViewHeaderFooterView.xib in Resources */,
 				363B830C223AB93D004CCBAA /* Assets.xcassets in Resources */,
 				363B830A223AB93B004CCBAA /* Main.storyboard in Resources */,
 			);
@@ -208,8 +280,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */,
+				363B8319223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift in Sources */,
+				363B8322223ACB5C004CCBAA /* LabelCollectionViewCell.swift in Sources */,
+				363B832B223ACC65004CCBAA /* CollectionViewLayout.swift in Sources */,
+				363B8326223ACB86004CCBAA /* CollectionViewCell.swift in Sources */,
+				363B832D223ACCEC004CCBAA /* CollectionViewDataSource.swift in Sources */,
 				363B8307223AB93A004CCBAA /* ViewController.swift in Sources */,
+				363B8329223ACBE0004CCBAA /* StretchImageView.swift in Sources */,
 				363B8305223AB93A004CCBAA /* AppDelegate.swift in Sources */,
+				363B831E223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
