@@ -11,7 +11,7 @@ protocol CollectionViewLayoutDelegate: class {
     func collectionView(_ collectionView: UICollectionView, layout: CollectionViewLayout, sectionInsetFor section: Int) -> UIEdgeInsets?
 }
 
-extension CollectionViewLayout {
+extension CollectionViewLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, layout: CollectionViewLayout, minimumInteritemSpacingFor section: Int) -> CGFloat? { return nil }
     func collectionView(_ collectionView: UICollectionView, layout: CollectionViewLayout, minimumLineSpacingFor section: Int) -> CGFloat? { return nil }
     func collectionView(_ collectionView: UICollectionView, layout: CollectionViewLayout, sectionInsetFor section: Int) -> UIEdgeInsets? { return nil }
@@ -39,7 +39,12 @@ final class CollectionViewLayout: UICollectionViewLayout {
     required init?(coder aDecoder: NSCoder) { fatalError() }
 
     override var collectionViewContentSize: CGSize {
-        return super.collectionViewContentSize
+        guard let collectionView = collectionView, collectionView.numberOfSections > 0 else {
+            return .zero
+        }
+        var contentSize = collectionView.bounds.size
+        contentSize.height = columnOffsetsY.last?.sorted(by: { $0 > $1 }).first ?? 0.0
+        return contentSize
     }
 
     private var allItemAttributes = [UICollectionViewLayoutAttributes]()
@@ -130,6 +135,8 @@ final class CollectionViewLayout: UICollectionViewLayout {
             allItemAttributes.append(layoutAttributes)
             position = layoutAttributes.frame.maxY
         }
+        let columnCount = delegate.collectionViewLayout(for: section).column
+        columnOffsetsY[section] = Array(repeating: position, count: columnCount)
     }
 
     private func layoutItems(
@@ -164,9 +171,9 @@ final class CollectionViewLayout: UICollectionViewLayout {
             }
             let offsetY: CGFloat
             switch layout {
-            case let .flow(column):
+            case .flow:
                 offsetY = itemIndex < columnCount ? position : columnOffsetsY[section][columnIndex]
-            case let .waterfall:
+            case .waterfall:
                 offsetY = columnOffsetsY[section][columnIndex]
             }
 
