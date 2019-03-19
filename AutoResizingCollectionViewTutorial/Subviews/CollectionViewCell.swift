@@ -1,6 +1,6 @@
 import UIKit
 
-final class CollectionViewCell: UICollectionViewCell {
+final class CollectionViewCell: UICollectionViewCell, NibLoadable, Reusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()

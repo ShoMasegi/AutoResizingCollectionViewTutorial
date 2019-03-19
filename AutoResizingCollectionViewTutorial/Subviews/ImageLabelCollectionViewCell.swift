@@ -1,6 +1,6 @@
 import UIKit
 
-final class ImageLabelCollectionViewCell: UICollectionViewCell {
+final class ImageLabelCollectionViewCell: UICollectionViewCell, NibLoadable, Reusable {
 
     override func awakeFromNib() {
         super.awakeFromNib()
