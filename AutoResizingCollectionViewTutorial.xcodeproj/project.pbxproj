@@ -27,6 +27,12 @@
 		363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */; };
 		363B8334223ACF11004CCBAA /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */; };
 		363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */; };
+		3643040A2240E6FF0068D037 /* ColorItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364304092240E6FF0068D037 /* ColorItem.swift */; };
+		3643040C2240E7230068D037 /* ColorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643040B2240E7230068D037 /* ColorCollection.swift */; };
+		3643040E2240E7B30068D037 /* TextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643040D2240E7B30068D037 /* TextItem.swift */; };
+		364304102240E7EE0068D037 /* ImageTextItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3643040F2240E7EE0068D037 /* ImageTextItem.swift */; };
+		364304122240E8140068D037 /* WaterfallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364304112240E8140068D037 /* WaterfallItem.swift */; };
+		364304142240E8210068D037 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364304132240E8210068D037 /* Mock.swift */; };
 		364304162240EC520068D037 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364304152240EC520068D037 /* UIColor+Extension.swift */; };
 		63884CF0F257C6A491435BA0 /* Pods_AutoResizingCollectionViewTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDFC16E1A5B43794FD7ED9 /* Pods_AutoResizingCollectionViewTutorial.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +61,12 @@
 		363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		364304092240E6FF0068D037 /* ColorItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorItem.swift; sourceTree = "<group>"; };
+		3643040B2240E7230068D037 /* ColorCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollection.swift; sourceTree = "<group>"; };
+		3643040D2240E7B30068D037 /* TextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItem.swift; sourceTree = "<group>"; };
+		3643040F2240E7EE0068D037 /* ImageTextItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTextItem.swift; sourceTree = "<group>"; };
+		364304112240E8140068D037 /* WaterfallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterfallItem.swift; sourceTree = "<group>"; };
+		364304132240E8210068D037 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		364304152240EC520068D037 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9D1FBBAC16E8525CA2B6D4B1 /* Pods-AutoResizingCollectionViewTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		B78DB56CFFEBED2869092789 /* Pods-AutoResizingCollectionViewTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +150,12 @@
 		363B832E223ACD39004CCBAA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				364304092240E6FF0068D037 /* ColorItem.swift */,
+				3643040B2240E7230068D037 /* ColorCollection.swift */,
+				3643040D2240E7B30068D037 /* TextItem.swift */,
+				3643040F2240E7EE0068D037 /* ImageTextItem.swift */,
+				364304112240E8140068D037 /* WaterfallItem.swift */,
+				364304132240E8210068D037 /* Mock.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,18 +312,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3643040A2240E6FF0068D037 /* ColorItem.swift in Sources */,
+				3643040E2240E7B30068D037 /* TextItem.swift in Sources */,
 				363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */,
 				364304162240EC520068D037 /* UIColor+Extension.swift in Sources */,
 				363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */,
+				364304102240E7EE0068D037 /* ImageTextItem.swift in Sources */,
 				363B8319223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift in Sources */,
+				364304142240E8210068D037 /* Mock.swift in Sources */,
 				363B8322223ACB5C004CCBAA /* LabelCollectionViewCell.swift in Sources */,
 				363B832B223ACC65004CCBAA /* CollectionViewLayout.swift in Sources */,
 				363B8326223ACB86004CCBAA /* CollectionViewCell.swift in Sources */,
 				363B832D223ACCEC004CCBAA /* CollectionViewDataSource.swift in Sources */,
+				3643040C2240E7230068D037 /* ColorCollection.swift in Sources */,
 				363B8307223AB93A004CCBAA /* ViewController.swift in Sources */,
 				363B8329223ACBE0004CCBAA /* StretchImageView.swift in Sources */,
 				363B8305223AB93A004CCBAA /* AppDelegate.swift in Sources */,
 				363B831E223ACB0F004CCBAA /* ImageLabelCollectionViewCell.swift in Sources */,
+				364304122240E8140068D037 /* WaterfallItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
