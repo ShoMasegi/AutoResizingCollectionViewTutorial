@@ -27,6 +27,7 @@
 		363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */; };
 		363B8334223ACF11004CCBAA /* HorizontalCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */; };
 		363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */; };
+		364304162240EC520068D037 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364304152240EC520068D037 /* UIColor+Extension.swift */; };
 		63884CF0F257C6A491435BA0 /* Pods_AutoResizingCollectionViewTutorial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FDFC16E1A5B43794FD7ED9 /* Pods_AutoResizingCollectionViewTutorial.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		363B8331223ACF11004CCBAA /* HorizontalCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewCell.swift; sourceTree = "<group>"; };
 		363B8332223ACF11004CCBAA /* HorizontalCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HorizontalCollectionViewCell.xib; sourceTree = "<group>"; };
 		363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		364304152240EC520068D037 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9D1FBBAC16E8525CA2B6D4B1 /* Pods-AutoResizingCollectionViewTutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.release.xcconfig"; sourceTree = "<group>"; };
 		B78DB56CFFEBED2869092789 /* Pods-AutoResizingCollectionViewTutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AutoResizingCollectionViewTutorial/Pods-AutoResizingCollectionViewTutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				363B8336223AD60A004CCBAA /* UICollectionView+Extension.swift */,
+				364304152240EC520068D037 /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				363B8333223ACF11004CCBAA /* HorizontalCollectionViewCell.swift in Sources */,
+				364304162240EC520068D037 /* UIColor+Extension.swift in Sources */,
 				363B8337223AD60A004CCBAA /* UICollectionView+Extension.swift in Sources */,
 				363B8319223AC8FD004CCBAA /* CollectionViewHeaderFooterView.swift in Sources */,
 				363B8322223ACB5C004CCBAA /* LabelCollectionViewCell.swift in Sources */,
