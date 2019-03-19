@@ -5,6 +5,6 @@ use_frameworks!
 # ignore all warnings from all pods
 inhibit_all_warnings!
 
-target 'AutoResizingCollectionViewTutorial' do
+target 'SelfResizingCollectionViewTutorial' do
     pod 'Kingfisher', '~> 5.0'
 end
