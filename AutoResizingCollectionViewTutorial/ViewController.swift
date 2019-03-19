@@ -17,6 +17,12 @@ final class ViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
+            collectionView.contentInset = UIEdgeInsets(
+                top: -UIApplication.shared.statusBarFrame.height,
+                left: 0,
+                bottom: 0,
+                right: 0
+            )
             collectionView.dataSource = dataSource
             collectionView.collectionViewLayout = layout
             collectionView.register(CollectionViewCell.self)
@@ -84,5 +90,28 @@ extension ViewController: CollectionViewLayoutDelegate {
                         layout: CollectionViewLayout,
                         footerHeightFor section: Int) -> CGFloat {
         return .leastNonzeroMagnitude
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout: CollectionViewLayout,
+                        sectionInsetFor section: Int) -> UIEdgeInsets? {
+        switch dataSource.sections[section] {
+        case .cover, .horizontal:
+            return nil
+        default:
+            return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout: CollectionViewLayout,
+                        minimumLineSpacingFor section: Int) -> CGFloat? {
+        return 6
+    }
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout: CollectionViewLayout,
+                        minimumInteritemSpacingFor section: Int) -> CGFloat? {
+        return 6
     }
 }
