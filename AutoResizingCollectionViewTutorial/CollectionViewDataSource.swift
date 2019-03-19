@@ -14,7 +14,9 @@ enum Section {
         mock.horizontalSection.forEach {
             sections.append(.horizontal($0))
         }
-        sections.append(.collection(mock.collectionSection))
+        mock.collectionSection.forEach {
+            sections.append(.collection($0))
+        }
         sections.append(.waterfall(mock.waterfallSection))
         return sections
     }
@@ -48,20 +50,25 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch sections[indexPath.section] {
-        case .cover:
+        case let .cover(colorItem):
             let cell: CollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.colorItem = colorItem
             return cell
-        case .text:
+        case let .text(textItem):
             let cell: LabelCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.textItem = textItem
             return cell
-        case let .horizontal(section):
+        case let .horizontal(collection):
             let cell: HorizontalCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.collection = collection
             return cell
-        case let .collection(section):
+        case let .collection(collection):
             let cell: CollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.colorItem = collection.items[indexPath.item]
             return cell
-        case let .waterfall(section):
+        case let .waterfall(collection):
             let cell: ImageLabelCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+            cell.imageTextItem = collection.items[indexPath.item]
             return cell
         }
     }
@@ -72,6 +79,16 @@ final class CollectionViewDataSource: NSObject, UICollectionViewDataSource {
         if kind == UICollectionView.elementKindSectionHeader {
             let headerView: CollectionViewHeaderFooterView = collectionView
                 .dequeueReusableSupplementaryView(ofKind: kind, for: indexPath)
+            switch sections[indexPath.section] {
+            case let .collection(collection):
+                headerView.label.text = collection.header
+            case let .horizontal(collection):
+                headerView.label.text = collection.header
+            case let .waterfall(collection):
+                headerView.label.text = collection.header
+            default:
+                break
+            }
             return headerView
         }
         return UICollectionReusableView()

@@ -45,8 +45,8 @@ extension ViewController: CollectionViewLayoutDelegate {
         switch dataSource.sections[section] {
         case .cover, .horizontal, .text:
             return .flow(column: 1)
-        case .collection:
-            return .flow(column: 5)
+        case let .collection(collection):
+            return .flow(column: collection.columnCount)
         case .waterfall:
             return .waterfall(column: 2)
         }
@@ -68,16 +68,18 @@ extension ViewController: CollectionViewLayoutDelegate {
             return CGSize(width: width, height: 100)
         }
     }
+
     func collectionView(_ collectionView: UICollectionView,
                         layout: CollectionViewLayout,
                         headerHeightFor section: Int) -> CGFloat {
         switch dataSource.sections[section] {
-        case .cover:
+        case .cover, .text:
             return .leastNonzeroMagnitude
         default:
             return 44
         }
     }
+
     func collectionView(_ collectionView: UICollectionView,
                         layout: CollectionViewLayout,
                         footerHeightFor section: Int) -> CGFloat {
