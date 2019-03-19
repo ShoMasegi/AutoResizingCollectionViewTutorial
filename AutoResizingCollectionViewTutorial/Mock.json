@@ -9,6 +9,7 @@
   "horizontal_section": [
     {
       "header": "Horizontal section",
+      "column_count": 0,
       "items": [
         { "color": "ff4567" },
         { "color": "34ff78" },
@@ -24,6 +25,7 @@
     },
     {
       "header": "Horizontal section",
+      "column_count": 0,
       "items": [
         { "color": "ff789a" },
         { "color": "4567ff" },
@@ -38,41 +40,61 @@
       ]
     }
   ],
-  "collection_section": {
-    "header": "Collection section",
-    "items": [
-      { "color": "ff789a" },
-      { "color": "4567ff" },
-      { "color": "34ff78" },
-      { "color": "67ffab" },
-      { "color": "ff4567" },
-      { "color": "34ff78" },
-      { "color": "ff4567" },
-      { "color": "67ffab" },
-      { "color": "ff789a" },
-      { "color": "4567ff" },
-      { "color": "ff789a" },
-      { "color": "4567ff" },
-      { "color": "34ff78" },
-      { "color": "67ffab" },
-      { "color": "ff4567" },
-      { "color": "34ff78" },
-      { "color": "ff4567" },
-      { "color": "67ffab" },
-      { "color": "ff789a" },
-      { "color": "4567ff" },
-      { "color": "ff789a" },
-      { "color": "4567ff" },
-      { "color": "34ff78" },
-      { "color": "67ffab" },
-      { "color": "ff4567" },
-      { "color": "34ff78" },
-      { "color": "ff4567" },
-      { "color": "67ffab" },
-      { "color": "ff789a" },
-      { "color": "4567ff" }
-    ]
-  },
+  "collection_section": [
+    {
+      "header": "Collection section 3 columns",
+      "column_count": 3,
+      "items": [
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "34ff78" },
+        { "color": "67ffab" },
+        { "color": "ff4567" },
+        { "color": "34ff78" },
+        { "color": "ff4567" },
+        { "color": "67ffab" },
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "34ff78" },
+        { "color": "67ffab" },
+        { "color": "ff4567" },
+        { "color": "34ff78" },
+        { "color": "ff4567" },
+        { "color": "67ffab" },
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "ff789a" }
+      ]
+    },
+    {
+      "header": "Collection section 4 columns",
+      "column_count": 4,
+      "items": [
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "34ff78" },
+        { "color": "67ffab" },
+        { "color": "ff4567" },
+        { "color": "34ff78" },
+        { "color": "ff4567" },
+        { "color": "67ffab" },
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "ff789a" },
+        { "color": "4567ff" },
+        { "color": "34ff78" },
+        { "color": "67ffab" },
+        { "color": "ff4567" },
+        { "color": "34ff78" },
+        { "color": "ff4567" },
+        { "color": "67ffab" },
+        { "color": "ff789a" },
+        { "color": "4567ff" }
+      ]
+    }
+  ],
   "waterfall_section": {
     "header": "Waterfall section",
     "items": [
@@ -82,7 +104,7 @@
       },
       {
         "title": "Cooolio😎 Share & Save it!...",
-        "image_url": "https://via.placeholder.com/300x200"
+        "image_url": "https://via.placeholder.com/300x500"
       },
       {
         "title": "Feeds & Cards",
@@ -98,7 +120,7 @@
       },
       {
         "title": "Cooolio😎 Share & Save it!...",
-        "image_url": "https://via.placeholder.com/300x250"
+        "image_url": "https://via.placeholder.com/300x350"
       },
       {
         "title": "This is our daily iOS app design inspiration article for our loyal readers.",
@@ -109,7 +131,7 @@
       },
       {
         "title": "Cooolio😎 Share & Save it!...",
-        "image_url": "https://via.placeholder.com/300x200"
+        "image_url": "https://via.placeholder.com/300x500"
       },
       {
         "title": "Feeds & Cards",
@@ -125,7 +147,7 @@
       },
       {
         "title": "Cooolio😎 Share & Save it!...",
-        "image_url": "https://via.placeholder.com/300x250"
+        "image_url": "https://via.placeholder.com/300x350"
       },
       {
         "title": "This is our daily iOS app design inspiration article for our loyal readers.",
