@@ -17,12 +17,7 @@ final class ViewController: UIViewController {
 
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
-            collectionView.contentInset = UIEdgeInsets(
-                top: -UIApplication.shared.statusBarFrame.height,
-                left: 0,
-                bottom: 0,
-                right: 0
-            )
+            collectionView.contentInset.top = -UIApplication.shared.statusBarFrame.height
             collectionView.dataSource = dataSource
             collectionView.collectionViewLayout = layout
             collectionView.register(CollectionViewCell.self)
