@@ -12,3 +12,13 @@ Learn how to implement self-resizing collection view layout.
 2. Clone this repository.
 3. Run `pod install` to install tools and dependencies.
 4. Open & Run `SelfResizingCollectionViewTutorial.xcworkspace`
+
+## Screen Shots
+
+Vertical | Horizontal
+:----:|:-----:
+![](https://s3-ap-northeast-1.amazonaws.com/hatena.masegi/AboutUICollectionViewLayout/output.gif) | ![](https://s3-ap-northeast-1.amazonaws.com/hatena.masegi/AboutUICollectionViewLayout/carousel.gif)
+
+## Reference
+
+- https://github.com/sgr-ksmt/WaterfallLayout
