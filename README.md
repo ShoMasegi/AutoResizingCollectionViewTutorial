@@ -1,8 +1,8 @@
 # SelfResizingCollectionViewTutorial
 
-![](https://img.shields.io/badge/Xcode-10.1%2B-blue.svg)
+![](https://img.shields.io/badge/Xcode-10.2%2B-blue.svg)
 ![](https://img.shields.io/badge/iOS-10.0%2B-blue.svg)
-![](https://img.shields.io/badge/Swift-4.2%2B-orange.svg)
+![](https://img.shields.io/badge/Swift-5.0%2B-orange.svg)
 
 Learn how to implement self-resizing collection view layout.
 
