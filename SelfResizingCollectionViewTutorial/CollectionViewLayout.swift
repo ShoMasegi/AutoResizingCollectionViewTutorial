@@ -48,6 +48,9 @@ final class CollectionViewLayout: UICollectionViewLayout {
     }
 
     private var allItemAttributes = [UICollectionViewLayoutAttributes]()
+    private var cachedItemAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
+    private var cachedHeaderAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
+    private var cachedFooterAttributes = [IndexPath: UICollectionViewLayoutAttributes]()
     private var cachedItemSizes = [IndexPath: CGSize]()
     private var columnOffsetsY = [[CGFloat]]()
 
@@ -55,9 +58,20 @@ final class CollectionViewLayout: UICollectionViewLayout {
         return newBounds.width != (collectionView?.bounds ?? .zero).width
     }
 
+    override func invalidationContext(
+        forBoundsChange newBounds: CGRect
+    ) -> UICollectionViewLayoutInvalidationContext {
+        if let context = super.invalidationContext(forBoundsChange: newBounds)
+            as? CollectionViewLayoutInvalidationContext {
+            context.invalidateAllItems()
+            return context
+        }
+        return super.invalidationContext(forBoundsChange: newBounds)
+    }
+
     override func shouldInvalidateLayout(
-            forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
-            withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
+        forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
+        withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
     ) -> Bool {
         guard let delegate = delegate, let collectionView = collectionView else {
             return false
@@ -72,19 +86,27 @@ final class CollectionViewLayout: UICollectionViewLayout {
                                             withOriginalAttributes: originalAttributes)
     }
 
+    override func invalidationContext(
+        forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
+        withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
+    ) -> UICollectionViewLayoutInvalidationContext {
+        cachedItemSizes[originalAttributes.indexPath] = preferredAttributes.size
+        let context = super.invalidationContext(forPreferredLayoutAttributes: preferredAttributes,
+                                                withOriginalAttributes: originalAttributes)
+        if let context = context as? CollectionViewLayoutInvalidationContext {
+            context.invalidateItems(after: originalAttributes.indexPath)
+        }
+        return context
+    }
+
     override func invalidateLayout(with context: UICollectionViewLayoutInvalidationContext) {
+        if let context = context as? CollectionViewLayoutInvalidationContext,
+           let invalidatedFirstIndexPath = context.invalidatedIndexPathAfterUpdate {
+            removeCachedAttributes(from: invalidatedFirstIndexPath)
+        }
         allItemAttributes.removeAll()
         columnOffsetsY.removeAll()
         super.invalidateLayout(with: context)
-    }
-
-    override func invalidationContext(
-            forPreferredLayoutAttributes preferredAttributes: UICollectionViewLayoutAttributes,
-            withOriginalAttributes originalAttributes: UICollectionViewLayoutAttributes
-    ) -> UICollectionViewLayoutInvalidationContext {
-        cachedItemSizes[originalAttributes.indexPath] = preferredAttributes.size
-        return super.invalidationContext(forPreferredLayoutAttributes: preferredAttributes,
-                                         withOriginalAttributes: originalAttributes)
     }
 
     override func prepare() {
@@ -118,22 +140,29 @@ final class CollectionViewLayout: UICollectionViewLayout {
         delegate: CollectionViewLayoutDelegate,
         section: Int
     ) {
-        let headerHeight = delegate.collectionView(collectionView,
-                                                   layout: self,
-                                                   headerHeightFor: section)
-        if headerHeight > CGFloat.leastNonzeroMagnitude {
-            let layoutAttributes = UICollectionViewLayoutAttributes(
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                with: IndexPath(item: 0, section: section)
-            )
-            layoutAttributes.frame = CGRect(
-                x: 0,
-                y: position,
-                width: collectionView.bounds.width,
-                height: headerHeight
-            )
-            allItemAttributes.append(layoutAttributes)
-            position = layoutAttributes.frame.maxY
+        let indexPath = IndexPath(item: 0, section: section)
+        if let cachedLayoutAttributes = cachedHeaderAttributes[indexPath] {
+            allItemAttributes.append(cachedLayoutAttributes)
+            position = cachedLayoutAttributes.frame.maxY
+        } else {
+            let headerHeight = delegate.collectionView(collectionView,
+                                                       layout: self,
+                                                       headerHeightFor: section)
+            if headerHeight > CGFloat.leastNonzeroMagnitude {
+                let layoutAttributes = UICollectionViewLayoutAttributes(
+                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                    with: indexPath
+                )
+                layoutAttributes.frame = CGRect(
+                    x: 0,
+                    y: position,
+                    width: collectionView.bounds.width,
+                    height: headerHeight
+                )
+                allItemAttributes.append(layoutAttributes)
+                cachedHeaderAttributes[indexPath] = layoutAttributes
+                position = layoutAttributes.frame.maxY
+            }
         }
         let columnCount = delegate.collectionViewLayout(for: section).column
         columnOffsetsY[section] = Array(repeating: position, count: columnCount)
@@ -159,33 +188,41 @@ final class CollectionViewLayout: UICollectionViewLayout {
         (0 ..< itemCount).forEach { itemIndex in
             let indexPath = IndexPath(item: itemIndex, section: section)
             let columnIndex = pickColumn(indexPath: indexPath, delegate: delegate)
-            let itemSize = delegate.collectionView(collectionView, layout: self, sizeForItemAt: indexPath)
-            let itemHeight: CGFloat
-            if itemSize == CollectionViewLayout.automaticSize {
-                itemHeight = (cachedItemSizes[indexPath] ?? .zero).height
-            } else {
-                cachedItemSizes[indexPath] = itemSize
-                itemHeight = itemSize.height > 0 && itemSize.width > 0 ?
-                             floor(itemSize.height * itemWidth / itemSize.width) :
-                             0.0
-            }
-            let offsetY: CGFloat
-            switch layout {
-            case .flow:
-                offsetY = itemIndex < columnCount ? position : columnOffsetsY[section][columnIndex]
-            case .waterfall:
-                offsetY = columnOffsetsY[section][columnIndex]
-            }
 
-            let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            layoutAttributes.frame = CGRect(
-                x: sectionInset.left + (itemWidth + minimumLineSpacing) * CGFloat(columnIndex),
-                y: offsetY,
-                width: itemWidth,
-                height: itemHeight
-            )
-            columnOffsetsY[section][columnIndex] = layoutAttributes.frame.maxY + minimumInteritemSpacing
-            itemsLayoutAttributes.append(layoutAttributes)
+            if let cachedLayoutAttributes = cachedItemAttributes[indexPath] {
+                columnOffsetsY[section][columnIndex] = cachedLayoutAttributes.frame.maxY + minimumInteritemSpacing
+                itemsLayoutAttributes.append(cachedLayoutAttributes)
+            } else {
+                let itemSize = delegate.collectionView(collectionView,
+                                                       layout: self,
+                                                       sizeForItemAt: indexPath)
+                let itemHeight: CGFloat
+                if itemSize == CollectionViewLayout.automaticSize {
+                    itemHeight = (cachedItemSizes[indexPath] ?? .zero).height
+                } else {
+                    cachedItemSizes[indexPath] = itemSize
+                    itemHeight = itemSize.height > 0 && itemSize.width > 0 ?
+                        floor(itemSize.height * itemWidth / itemSize.width) :
+                        0.0
+                }
+                let offsetY: CGFloat
+                switch layout {
+                case .flow:
+                    offsetY = itemIndex < columnCount ? position : columnOffsetsY[section][columnIndex]
+                case .waterfall:
+                    offsetY = columnOffsetsY[section][columnIndex]
+                }
+                let layoutAttributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+                layoutAttributes.frame = CGRect(
+                    x: sectionInset.left + (itemWidth + minimumLineSpacing) * CGFloat(columnIndex),
+                    y: offsetY,
+                    width: itemWidth,
+                    height: itemHeight
+                )
+                columnOffsetsY[section][columnIndex] = layoutAttributes.frame.maxY + minimumInteritemSpacing
+                itemsLayoutAttributes.append(layoutAttributes)
+                cachedItemAttributes[indexPath] = layoutAttributes
+            }
         }
         allItemAttributes.append(contentsOf: itemsLayoutAttributes)
     }
@@ -196,23 +233,30 @@ final class CollectionViewLayout: UICollectionViewLayout {
         delegate: CollectionViewLayoutDelegate,
         section: Int
     ) {
+        let indexPath = IndexPath(item: 0, section: section)
         let maxOffsetY = columnOffsetsY[section].sorted { $0 > $1 }.first ?? 0.0
         position = maxOffsetY
 
-        let footerHeight = delegate.collectionView(collectionView, layout: self, footerHeightFor: section)
-        if footerHeight > CGFloat.leastNonzeroMagnitude {
-            let layoutAttributes = UICollectionViewLayoutAttributes(
-                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
-                with: IndexPath(item: 0, section: section)
-            )
-            layoutAttributes.frame = CGRect(
-                x: 0,
-                y: maxOffsetY,
-                width: collectionView.bounds.width,
-                height: footerHeight
-            )
-            allItemAttributes.append(layoutAttributes)
-            position = layoutAttributes.frame.maxY
+        if let cachedLayoutAttributes = cachedFooterAttributes[indexPath] {
+            allItemAttributes.append(cachedLayoutAttributes)
+            position = cachedLayoutAttributes.frame.maxY
+        } else {
+            let footerHeight = delegate.collectionView(collectionView, layout: self, footerHeightFor: section)
+            if footerHeight > CGFloat.leastNonzeroMagnitude {
+                let layoutAttributes = UICollectionViewLayoutAttributes(
+                    forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
+                    with: indexPath
+                )
+                layoutAttributes.frame = CGRect(
+                    x: 0,
+                    y: maxOffsetY,
+                    width: collectionView.bounds.width,
+                    height: footerHeight
+                )
+                allItemAttributes.append(layoutAttributes)
+                cachedFooterAttributes[indexPath] = layoutAttributes
+                position = layoutAttributes.frame.maxY
+            }
         }
     }
 
@@ -237,6 +281,15 @@ final class CollectionViewLayout: UICollectionViewLayout {
         }
     }
 
+    private func removeCachedAttributes(from indexPath: IndexPath) {
+        let isIncluded: ((key: IndexPath, _: UICollectionViewLayoutAttributes)) -> Bool = {
+            $0.key.section < indexPath.section
+        }
+        cachedHeaderAttributes = cachedHeaderAttributes.filter(isIncluded)
+        cachedItemAttributes = cachedItemAttributes.filter(isIncluded)
+        cachedFooterAttributes = cachedFooterAttributes.filter(isIncluded)
+    }
+
     private func minimumLineSpacing(for section: Int) -> CGFloat {
         return collectionView.flatMap { delegate?.collectionView($0, layout: self, minimumLineSpacingFor: section) } ?? .leastNonzeroMagnitude
     }
@@ -247,5 +300,22 @@ final class CollectionViewLayout: UICollectionViewLayout {
 
     private func sectionInset(for section: Int) -> UIEdgeInsets {
         return collectionView.flatMap { delegate?.collectionView($0, layout: self, sectionInsetFor: section) } ?? .zero
+    }
+
+    override class var invalidationContextClass: AnyClass {
+        return CollectionViewLayoutInvalidationContext.self
+    }
+}
+
+final class CollectionViewLayoutInvalidationContext: UICollectionViewLayoutInvalidationContext {
+
+    private(set) var invalidatedIndexPathAfterUpdate: IndexPath?
+
+    func invalidateItems(after indexPath: IndexPath) {
+        invalidatedIndexPathAfterUpdate = indexPath
+    }
+
+    func invalidateAllItems() {
+        invalidatedIndexPathAfterUpdate = IndexPath(item: 0, section: 0)
     }
 }
